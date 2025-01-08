@@ -101,6 +101,11 @@ def employee_form():
     Email_entry = Entry(detail_frame, bg='light yellow')
     Email_entry.grid(row=0, column=5, padx=20, pady=10)
 
+    gender_lable = Label(detail_frame, text='Gender')
+    gender_lable.grid(row=1, column=0)
+    gender_combobox=ttk.Combobox(detail_frame, values=('Male', 'Female'), width=18, state='readonly')
+    gender_combobox.grid(row=1, column=1)
+
 
 
 
