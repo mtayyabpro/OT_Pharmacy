@@ -83,6 +83,25 @@ def employee_form():
     employee_treeview.column('usertype', width=100)
 
 
+    detail_frame=Frame(employee_frame)
+    detail_frame.place(x=0, y=300)
+
+    empid_lable=Label(detail_frame, text='EmpID')
+    empid_lable.grid(row=0, column=0)
+    empid_entry=Entry(detail_frame, bg='light yellow')
+    empid_entry.grid(row=0, column=1, padx=20, pady=10)
+
+    name_lable = Label(detail_frame, text='Name')
+    name_lable.grid(row=0, column=2)
+    name_entry = Entry(detail_frame, bg='light yellow')
+    name_entry.grid(row=0, column=3, padx=20, pady=10)
+
+    Email_lable = Label(detail_frame, text='Email')
+    Email_lable.grid(row=0, column=4)
+    Email_entry = Entry(detail_frame, bg='light yellow')
+    Email_entry.grid(row=0, column=5, padx=20, pady=10)
+
+
 
 
 
