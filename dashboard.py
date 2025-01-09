@@ -86,7 +86,7 @@ def employee_form():
 
 
     detail_frame=Frame(employee_frame)
-    detail_frame.place(x=0, y=300)
+    detail_frame.place(x=20, y=300)
 
     empid_lable=Label(detail_frame, text='EmpID')
     empid_lable.grid(row=0, column=0)
@@ -106,12 +106,78 @@ def employee_form():
     gender_lable = Label(detail_frame, text='Gender')
     gender_lable.grid(row=1, column=0)
     gender_combobox=ttk.Combobox(detail_frame, values=('Male', 'Female'), width=18, state='readonly')
+    gender_combobox.set('select gender')
     gender_combobox.grid(row=1, column=1)
 
     dob_lable = Label(detail_frame, text='Date of Birth')
     dob_lable.grid(row=1, column=2)
-    dob_combobox = DateEntry(detail_frame,  width=18, state='readonly', date_pattern='dd/mm/yyyy')
-    dob_combobox.grid(row=1, column=3)
+    dob_lable = DateEntry(detail_frame,  width=18, state='readonly', date_pattern='dd/mm/yyyy')
+    dob_lable.grid(row=1, column=3)
+
+    contact_lable = Label(detail_frame, text='Contact')
+    contact_lable.grid(row=1, column=4)
+    contact_lable = Entry(detail_frame, bg='light yellow')
+    contact_lable.grid(row=1, column=5, padx=20, pady=10)
+
+    emp_type_lable = Label(detail_frame, text='Employee Type')
+    emp_type_lable.grid(row=2, column=0)
+    emp_type_combobox = ttk.Combobox(detail_frame, values=('Regular', 'Contract', 'Adhoc'), width=18, state='readonly')
+    emp_type_combobox.set('select type')
+    emp_type_combobox.grid(row=2, column=1, padx=20, pady=10)
+
+    emp_edu_lable = Label(detail_frame, text='Education')
+    emp_edu_lable.grid(row=2, column=2)
+    emp_edu_combobox = ttk.Combobox(detail_frame, values=('Regular', 'Contract', 'Adhoc'), width=18, state='readonly')
+    emp_edu_combobox.set('select Education')
+    emp_edu_combobox.grid(row=2, column=3, padx=20, pady=10)
+
+    emp_shift_lable = Label(detail_frame, text='Employee Shift')
+    emp_shift_lable.grid(row=2, column=4, padx=20, pady=10)
+    emp_shift_combobox = ttk.Combobox(detail_frame, values=('Morning', 'Evening', 'night'), width=18, state='readonly')
+    emp_shift_combobox.set('select Shift')
+    emp_shift_combobox.grid(row=2, column=5)
+
+    add_lable=tk.Label(detail_frame, text='address')
+    add_lable.grid(row=3, column=0, padx=20, pady=10)
+
+    add_text=tk.Text(detail_frame, width=18, height=3, bg='light yellow')
+    add_text.grid(row=3, column=1, rowspan=2)
+
+    doj_lable = Label(detail_frame, text='Date of Joining')
+    doj_lable.grid(row=3, column=2)
+    doj_lable = DateEntry(detail_frame, width=18, state='readonly', date_pattern='dd/mm/yyyy')
+    doj_lable.grid(row=3, column=3)
+
+    salary_lable = Label(detail_frame, text='Salary')
+    salary_lable.grid(row=3, column=4)
+    salary_lable = Entry(detail_frame, bg='light yellow')
+    salary_lable.grid(row=3, column=5, padx=20, pady=10)
+
+    user_type_lable = Label(detail_frame, text='User Type')
+    user_type_lable.grid(row=4, column=2, padx=20, pady=10)
+    user_type_combobox = ttk.Combobox(detail_frame, values=('Admin', 'Evening', 'night'), width=18, state='readonly')
+    user_type_combobox.set('select User Type')
+    user_type_combobox.grid(row=4, column=3)
+
+    password_lable = Label(detail_frame, text='Password')
+    password_lable.grid(row=4, column=4)
+    password_lable = Entry(detail_frame, bg='light yellow')
+    password_lable.grid(row=4, column=5, padx=20, pady=10)
+
+    button_frame=Frame(employee_frame)
+    button_frame.place(x=200, y=500)
+    add_button=Button(button_frame, text='Add', width=10)
+    add_button.grid(row=0, column=2, padx=20)
+
+    clear_button = Button(button_frame, text='clear', width=10)
+    clear_button.grid(row=0, column=3, padx=20)
+
+    update_button = Button(button_frame, text='Update', width=10)
+    update_button.grid(row=0, column=4, padx=20)
+
+    delete_button = Button(button_frame, text='Delete', width=10)
+    delete_button.grid(row=0, column=5, padx=20)
+
 
 
 
@@ -125,15 +191,19 @@ window = tk.Tk()
 window.title("Dashboard")  # Set the title of the window
 window.geometry("1270x680+0+0")  # Set the window size
 
+
 bg_image=PhotoImage(file="inventry.png")
 # Create and display a label
 titleLabel = tk.Label(window, image=bg_image,compound="left", text="        Inventory Management System", font=("Arial", 20, 'bold'), bg="lightblue", fg="black", anchor="w", padx=20)
 titleLabel.place(x=0,y=0, relwidth=1 )
 logoutButton=Button(window,text="Logout", font=("Arial", 10, 'bold'))
 logoutButton.place(x=1100,y=10)
+
 current_datetime=datetime.now()
-formatted_datetime = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
-subtitleLabel = tk.Label(text="welcom Admin\t\t {formatted_datetime}" ,  font=("Arial", 20, 'bold'))
+formatted_datetime = current_datetime.strftime("%d-%m-%y %H:%M:%S")
+subtitleLabel = tk.Label(window,
+    text=f"Welcome Admin\t\t {formatted_datetime}",  # Use f-string to include the variable
+    font=("Arial", 20, "bold"))
 subtitleLabel.place(x=0,y=70, relwidth=1 )
 
 leftFrame=Frame(window)
