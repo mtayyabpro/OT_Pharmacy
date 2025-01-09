@@ -3,6 +3,8 @@ from tkinter import PhotoImage, Button, Frame, Label, Entry, Scrollbar
 from datetime import datetime
 from tkinter import ttk
 from tkinter.constants import HORIZONTAL, VERTICAL, BOTTOM, RIGHT
+#from tkinter import d
+from tkcalendar import dateentry, DateEntry
 
 
 #functionality
@@ -105,6 +107,11 @@ def employee_form():
     gender_lable.grid(row=1, column=0)
     gender_combobox=ttk.Combobox(detail_frame, values=('Male', 'Female'), width=18, state='readonly')
     gender_combobox.grid(row=1, column=1)
+
+    dob_lable = Label(detail_frame, text='Date of Birth')
+    dob_lable.grid(row=1, column=2)
+    dob_combobox = DateEntry(detail_frame,  width=18, state='readonly', date_pattern='dd/mm/yyyy')
+    dob_combobox.grid(row=1, column=3)
 
 
 
